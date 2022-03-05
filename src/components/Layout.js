@@ -11,7 +11,7 @@ export default function Layout({ children, title = "banner-reference" }) {
       <Head>
         <title>{title}</title>
       </Head>
-      <header>
+      <header className="shadow-2xl">
         <Navbar />
       </header>
       <main className="bg-blue-50">{children}</main>

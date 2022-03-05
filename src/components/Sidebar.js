@@ -115,12 +115,24 @@ export default function Sidebar({
         </div>
       </div>
       <div className="w-full bg-white rounded-2xl px-5 py-2 my-5">
-        <div className="text-lg text-gray-800 font-bold my-3">Tag</div>
+        <div className="flex flex-wrap my-3">
+          <div className="text-lg text-gray-800 font-bold">Tag</div>
+          {tagType.id === "" ? (
+            ""
+          ) : (
+            <div
+              className="mx-2 px-2 p-0.5 bg-red-400 text-gray-100 rounded-xl"
+              onClick={() => setTagType({ id: "", name: "" })}
+            >
+              clear
+            </div>
+          )}
+        </div>
         <div className="flex flex-wrap my-2 text-xs">
           {tags.results.map((tag) =>
             tag.id === tagType.id ? (
               <div
-                className="mx-1 px-3 my-1 py-1 bg-blue-400 rounded-xl"
+                className="mx-1 px-3 my-1 py-1 bg-blue-400 text-white rounded-xl"
                 key={tag.id}
               >
                 #{tag.name}
@@ -129,6 +141,7 @@ export default function Sidebar({
               <div
                 className="mx-1 px-3 my-1 py-1 bg-gray-200 rounded-xl"
                 key={tag.id}
+                onClick={() => setTagType({ id: tag.id, name: tag.name })}
               >
                 #{tag.name}
               </div>
