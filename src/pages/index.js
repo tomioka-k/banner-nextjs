@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 import useSWR from "swr";
 import axios from "axios";
+import InfiniteScroll from "react-infinite-scroller";
 
 import Layout from "../components/Layout";
 import Sidebar from "../components/Sidebar";
@@ -42,6 +43,12 @@ export default function Home({ images, categories, tags, colors }) {
     id: "",
     name: "",
   });
+  const [hasMore, setHasMore] = useState(true);
+  const loader = (
+    <div className="loader" key={0}>
+      Loading ...
+    </div>
+  );
 
   const paramsList = () => {
     let params = {
@@ -85,15 +92,17 @@ export default function Home({ images, categories, tags, colors }) {
           {banner_list.count === 0 ? (
             "見つかりませんでした"
           ) : (
-            <div className="flex flex-wrap">
-              {banner_list
-                ? banner_list.results.map((banner) => (
-                    <div key={banner.id} className="xl:w-1/4 lg:w-1/3 w-1/2">
-                      <Card image={banner.image} />
-                    </div>
-                  ))
-                : "isLoading"}
-            </div>
+            <InfiniteScroll hasMore={hasMore} loader={loader}>
+              <div className="flex flex-wrap">
+                {banner_list
+                  ? banner_list.results.map((banner) => (
+                      <div key={banner.id} className="xl:w-1/4 lg:w-1/3 w-1/2">
+                        <Card image={banner.image} />
+                      </div>
+                    ))
+                  : "isLoading"}
+              </div>
+            </InfiniteScroll>
           )}
         </div>
       </div>
