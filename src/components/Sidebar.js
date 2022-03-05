@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import classnames from "classnames";
+import styled from "styled-components";
 
 import { useState } from "react";
 
@@ -16,8 +16,9 @@ export default function Sidebar({
   tagType,
   setTagType,
 }) {
-  //   const [imageType, setImageType] = useState("");
-  const [colorNum, setColorNum] = useState("");
+  const ColorSquare = styled.div`
+    background: black;
+  `;
 
   return (
     <div>
@@ -66,10 +67,11 @@ export default function Sidebar({
         <div className="text-lg text-gray-800 font-bold my-3">Color</div>
         <div className="flex flex-wrap my-2 text-sm">
           {colors.results.map((color) => (
-            <div
+            <ColorSquare
               key={color.id}
-              className="w-10 h-10 mx-1 bg-gray-200 cursor-pointer"
-            ></div>
+              style={{ backgroundColor: color.code }}
+              className="w-8 h-8 mx-1 bg-gray-200 cursor-pointer border-gray-400"
+            />
           ))}
         </div>
       </div>
