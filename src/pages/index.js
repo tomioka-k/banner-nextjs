@@ -39,12 +39,19 @@ export default function Home({ images, categories, tags, colors }) {
     name: "",
   });
 
-  const fetchUrl =
-    `${fetchApiUrl}image?` +
-    new URLSearchParams({
+  const paramsList = () => {
+    let params = {
       image_type: imageType,
       category: categoryType.id,
-    });
+    };
+    if (tagType.id !== "") {
+      params.tag = tagType.id;
+      return params;
+    }
+    return params;
+  };
+
+  const fetchUrl = `${fetchApiUrl}image?` + new URLSearchParams(paramsList());
 
   const { data: banner_list, error } = useSWR(fetchUrl, fetcher, {
     fallbackData: "",
