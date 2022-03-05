@@ -15,6 +15,8 @@ export default function Sidebar({
   setCategoryType,
   tagType,
   setTagType,
+  colorType,
+  setColorType,
 }) {
   const ColorSquare = styled.div`
     background: black;
@@ -64,15 +66,40 @@ export default function Sidebar({
         </div>
       </div>
       <div className="w-full bg-white rounded-2xl px-5 py-2 my-5">
-        <div className="text-lg text-gray-800 font-bold my-3">Color</div>
+        <div className="flex flex-wrap my-3">
+          <div className="text-lg text-gray-800 font-bold ">Color</div>
+          {colorType.id === "" ? (
+            ""
+          ) : (
+            <div
+              className="mx-2 px-2 p-0.5 bg-red-400 text-gray-100 rounded-xl cursor-pointer"
+              onClick={() => setColorType({ id: "", name: "" })}
+            >
+              clear
+            </div>
+          )}
+        </div>
+
         <div className="flex flex-wrap my-2 text-sm">
-          {colors.results.map((color) => (
-            <ColorSquare
-              key={color.id}
-              style={{ backgroundColor: color.code }}
-              className="w-8 h-8 mx-1 bg-gray-200 cursor-pointer border-gray-400"
-            />
-          ))}
+          {colors.results.map((color) =>
+            color.id === colorType.id ? (
+              <ColorSquare
+                key={color.id}
+                style={{
+                  backgroundColor: color.code,
+                  border: "5px solid #60A5FA",
+                }}
+                className="w-8 h-8 mx-1 cursor-pointer"
+              />
+            ) : (
+              <ColorSquare
+                key={color.id}
+                style={{ backgroundColor: color.code }}
+                className="w-8 h-8 mx-1 cursor-pointer"
+                onClick={() => setColorType({ id: color.id, name: color.name })}
+              />
+            )
+          )}
         </div>
       </div>
 

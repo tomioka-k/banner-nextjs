@@ -34,6 +34,10 @@ export default function Home({ images, categories, tags, colors }) {
     id: "",
     name: "",
   });
+  const [colorType, setColorType] = useState({
+    id: "",
+    name: "",
+  });
   const [tagType, setTagType] = useState({
     id: "",
     name: "",
@@ -43,6 +47,7 @@ export default function Home({ images, categories, tags, colors }) {
     let params = {
       image_type: imageType,
       category: categoryType.id,
+      color: colorType.id,
     };
     if (tagType.id !== "") {
       params.tag = tagType.id;
@@ -54,7 +59,7 @@ export default function Home({ images, categories, tags, colors }) {
   const fetchUrl = `${fetchApiUrl}image?` + new URLSearchParams(paramsList());
 
   const { data: banner_list, error } = useSWR(fetchUrl, fetcher, {
-    fallbackData: "",
+    fallbackData: images,
   });
 
   return (
@@ -72,18 +77,24 @@ export default function Home({ images, categories, tags, colors }) {
             setCategoryType={setCategoryType}
             tagType={tagType}
             setTagType={setTagType}
+            colorType={colorType}
+            setColorType={setColorType}
           />
         </div>
         <div className="w-full lg:w-3/4 pl-5">
-          <div className="flex flex-wrap">
-            {banner_list
-              ? banner_list.results.map((banner) => (
-                  <div key={banner.id} className="xl:w-1/4 lg:w-1/3 w-1/2">
-                    <Card image={banner.image} />
-                  </div>
-                ))
-              : "見つかりませんでした"}
-          </div>
+          {banner_list.count === 0 ? (
+            "見つかりませんでした"
+          ) : (
+            <div className="flex flex-wrap">
+              {banner_list
+                ? banner_list.results.map((banner) => (
+                    <div key={banner.id} className="xl:w-1/4 lg:w-1/3 w-1/2">
+                      <Card image={banner.image} />
+                    </div>
+                  ))
+                : "isLoading"}
+            </div>
+          )}
         </div>
       </div>
     </Layout>
