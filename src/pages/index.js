@@ -82,7 +82,7 @@ export default function Home({ images, categories, tags, colors }) {
                     <Card image={banner.image} />
                   </div>
                 ))
-              : "a"}
+              : "見つかりませんでした"}
           </div>
         </div>
       </div>

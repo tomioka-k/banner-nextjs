@@ -28,7 +28,7 @@ export default function Sidebar({
             ""
           ) : (
             <div
-              className="mx-2 px-2 p-0.5 bg-red-400 text-gray-100 rounded-xl"
+              className="mx-2 px-2 p-0.5 bg-red-400 text-gray-100 rounded-xl cursor-pointer"
               onClick={() => setImageType("")}
             >
               clear
@@ -37,26 +37,26 @@ export default function Sidebar({
         </div>
         <div className="flex flex-wrap text-center my-2 text-sm">
           {imageType === "square" ? (
-            <div className="w-16 h-16 bg-blue-200 mx-3 border-8 border-blue-400"></div>
+            <div className="w-16 h-16 bg-blue-200 mx-3 border-8 border-blue-400 cursor-pointer"></div>
           ) : (
             <div
-              className="w-16 h-16 bg-gray-100 mx-3 border-8 border-gray-400"
+              className="w-16 h-16 bg-gray-100 mx-3 border-8 border-gray-400 cursor-pointer"
               onClick={() => setImageType("square")}
             ></div>
           )}
           {imageType === "horizontal" ? (
-            <div className="w-20 h-10 self-center bg-blue-200 mx-3 border-8 border-blue-400"></div>
+            <div className="w-20 h-10 self-center bg-blue-200 mx-3 border-8 border-blue-400 cursor-pointer"></div>
           ) : (
             <div
-              className="w-20 h-10 self-center bg-gray-100 mx-3 border-8 border-gray-400"
+              className="w-20 h-10 self-center bg-gray-100 mx-3 border-8 border-gray-400 cursor-pointer"
               onClick={() => setImageType("horizontal")}
             ></div>
           )}
           {imageType === "vertical" ? (
-            <div className="w-12 h-16 bg-blue-200 mx-3 border-8 border-blue-400"></div>
+            <div className="w-12 h-16 bg-blue-200 mx-3 border-8 border-blue-400 cursor-pointer"></div>
           ) : (
             <div
-              className="w-12 h-16 bg-gray-100 mx-3 border-8 border-gray-400"
+              className="w-12 h-16 bg-gray-100 mx-3 border-8 border-gray-400 cursor-pointer"
               onClick={() => setImageType("vertical")}
             ></div>
           )}
@@ -68,7 +68,7 @@ export default function Sidebar({
           {colors.results.map((color) => (
             <div
               key={color.id}
-              className={classnames("w-10", "h-10", "mx-1", "bg-gray-200")}
+              className="w-10 h-10 mx-1 bg-gray-200 cursor-pointer"
             ></div>
           ))}
         </div>
@@ -81,7 +81,7 @@ export default function Sidebar({
             ""
           ) : (
             <div
-              className="mx-2 px-2 p-0.5 bg-red-400 text-gray-100 rounded-xl"
+              className="mx-2 px-2 p-0.5 bg-red-400 text-gray-100 rounded-xl cursor-pointer"
               onClick={() => setCategoryType({ id: "", name: "" })}
             >
               clear
@@ -96,14 +96,14 @@ export default function Sidebar({
             category.id === categoryType.id ? (
               <div
                 key={category.id}
-                className="mx-1 px-3 my-1 py-1 rounded-xl bg-blue-400 text-white"
+                className="mx-1 px-3 my-1 py-1 rounded-xl bg-blue-400 text-white cursor-pointer"
               >
                 {category.name}
               </div>
             ) : (
               <div
                 key={category.id}
-                className="mx-1 px-3 my-1 py-1 rounded-xl bg-gray-200"
+                className="mx-1 px-3 my-1 py-1 rounded-xl bg-gray-200 cursor-pointer"
                 onClick={() =>
                   setCategoryType({ id: category.id, name: category.name })
                 }
@@ -121,7 +121,7 @@ export default function Sidebar({
             ""
           ) : (
             <div
-              className="mx-2 px-2 p-0.5 bg-red-400 text-gray-100 rounded-xl"
+              className="mx-2 px-2 p-0.5 bg-red-400 text-gray-100 rounded-xl cursor-pointer"
               onClick={() => setTagType({ id: "", name: "" })}
             >
               clear
@@ -132,14 +132,14 @@ export default function Sidebar({
           {tags.results.map((tag) =>
             tag.id === tagType.id ? (
               <div
-                className="mx-1 px-3 my-1 py-1 bg-blue-400 text-white rounded-xl"
+                className="mx-1 px-3 my-1 py-1 bg-blue-400 text-white rounded-xl cursor-pointer"
                 key={tag.id}
               >
                 #{tag.name}
               </div>
             ) : (
               <div
-                className="mx-1 px-3 my-1 py-1 bg-gray-200 rounded-xl"
+                className="mx-1 px-3 my-1 py-1 bg-gray-200 rounded-xl cursor-pointer"
                 key={tag.id}
                 onClick={() => setTagType({ id: tag.id, name: tag.name })}
               >
