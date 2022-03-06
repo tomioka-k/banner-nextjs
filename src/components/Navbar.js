@@ -11,9 +11,9 @@ export default function Navbar() {
       </div>
       <div className="space-x-8">
         <Link href="/">Home</Link>
-        <Link href="/about">About</Link>
         <Link href="https://self-methods.com/">Blogs</Link>
-        <Link href="/contact">Contact</Link>
+        <Link href="/about">About</Link>
+        <Link href="/privacy-policy">Privacy Policy</Link>
       </div>
     </nav>
   );

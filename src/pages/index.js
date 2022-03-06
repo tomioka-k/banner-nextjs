@@ -66,11 +66,11 @@ export default function Home({ images, categories, tags, colors }) {
   const fetchUrl = `${fetchApiUrl}image?` + new URLSearchParams(paramsList());
 
   const { data: banner_list, error } = useSWR(fetchUrl, fetcher, {
-    fallbackData: images,
+    fallbackData: "",
   });
 
   return (
-    <Layout title="bannaer-reference">
+    <Layout title="Top">
       <div className="container flex justify-around py-10 mx-auto">
         <div className="w-full lg:w-1/4 py-3">
           <Sidebar
@@ -90,7 +90,7 @@ export default function Home({ images, categories, tags, colors }) {
         </div>
         <div className="w-full lg:w-3/4 pl-5">
           {banner_list.count === 0 ? (
-            "見つかりませんでした"
+            <div className="text-gray-600">見つかりませんでした</div>
           ) : (
             <InfiniteScroll hasMore={hasMore} loader={loader}>
               <div className="flex flex-wrap">
@@ -123,5 +123,6 @@ export async function getStaticProps() {
       tags,
       colors,
     },
+    revalidate: 3,
   };
 }

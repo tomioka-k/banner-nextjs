@@ -5,11 +5,11 @@ import Image from "next/image";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 
-export default function Layout({ children, title = "banner-reference" }) {
+export default function Layout({ children, title = "Top" }) {
   return (
     <div>
       <Head>
-        <title>{title}</title>
+        <title>{title} | banner-reference</title>
       </Head>
       <header className="shadow-2xl">
         <Navbar />

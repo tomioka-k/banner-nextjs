@@ -11,6 +11,18 @@ export default function About() {
         <div className="bg-white flex mx-auto my-5 w-full  lg:w-3/4 rounded-3xl">
           <div className="mx-10 my-5">
             <h2 className="text-5xl text-center my-10">About</h2>
+            <Heading3 title={"当サイトについて"} />
+            <div className="my-14 text-lg text-gray-700 leading-loose">
+              <p>
+                当サイトはバナー作成の際に、デザインの参考用にと思い作成しました。
+              </p>
+              <p>
+                メールマガジンや広告上で目にするデザインは多数ありますが、自分でいざ作ろうとすると難しいものですよね。
+              </p>
+              <p>
+                そんな中で自分も含め沢山の人のお役に立てればと思い作成しました。
+              </p>
+            </div>
             <Heading3 title={"掲載バナーについて"} />
 
             <div className="my-14 text-lg text-gray-700 leading-loose">
@@ -25,63 +37,28 @@ export default function About() {
                 また、ここに掲載しているバナーは広告の効果を保証するものではありません。あくまでもデザインの参考までにご覧ください。
               </p>
             </div>
-            <Heading3 title={"当サイトに掲載されている広告について"} />
-
+            <Heading3 title={"使用技術について"} />
             <div className="my-14 text-lg text-gray-700 leading-loose">
               <p>
-                当サイトでは、第三者配信の広告サービスの
+                当サイトはフロントエンドは
+                <a className="text-blue-400" href="https://nextjs.org/">
+                  Next.js
+                </a>
+                、バックエンドはpythonフレームワークの
                 <a
                   className="text-blue-400"
-                  href="http://www.google.com/adsense/start/"
+                  href="https://www.djangoproject.com/"
                 >
-                  Googleアドセンス
+                  django
                 </a>
-                を利用しています。
-                このような広告配信事業者は、ユーザーの興味に応じた商品やサービスの広告を表示するため、当サイトや他サイトへのアクセスに関する情報
-                『Cookie』(氏名、住所、メール アドレス、電話番号は含まれません)
-                を使用することがあります。
-                またGoogleアドセンスに関して、このプロセスの詳細やこのような情報が広告配信事業者に使用されないようにする方法については、
+                /
                 <a
                   className="text-blue-400"
-                  href="http://www.google.co.jp/policies/technologies/ads/"
+                  href="https://www.django-rest-framework.org/"
                 >
-                  こちら
+                  djangoRESTframework
                 </a>
-                をクリックしてください。
-              </p>
-            </div>
-
-            <Heading3
-              title={"当サイトが使用しているアクセス解析ツールについて"}
-            />
-
-            <div className="my-14 text-lg text-gray-700 leading-loose">
-              <p>
-                当サイトでは、Googleによるアクセス解析ツール「Googleアナリティクス」を利用しています。
-                このGoogleアナリティクスはトラフィックデータの収集のためにCookieを使用しています。
-                このトラフィックデータは匿名で収集されており、個人を特定するものではありません。
-                この機能はCookieを無効にすることで収集を拒否することが出来ますので、お使いのブラウザの設定をご確認ください。
-                この規約に関して、詳しくは以下のWebページをクリックしてください。
-              </p>
-              <a
-                className="text-blue-400"
-                href="https://www.google.com/analytics/terms/jp.html"
-              >
-                {" "}
-                Terms of Service | Google Analytics – Google
-              </a>
-            </div>
-            <Heading3 title={"当サイトへのリンクについて"} />
-            <div className="my-14 text-lg text-gray-700 leading-loose">
-              <p>
-                当サイトは完全リンクフリーです。
-                トップページ、記事など、正規に公開しているページであれば、どのページにリンクしていただいても問題ありません。
-                ただしインラインフレームの使用や、画像への直リンクなどは禁止させて頂いております。
-                免責事項
-                当サイトに掲載する情報は記事公表時点の正しいものを提供するよう努めております。
-                ただし、提供している情報、リンク先などにより、いかなる損失や損害などの被害が発生しても当サイトでは責任を負いかねますので、ご了承ください。
-                リンク先の商品は当サイトが販売しているのではなく、各リンク先店舗での販売となります。
-                購入方法、その他お問い合わせは各店舗までご確認ください。商品購入に関するトラブルに関しては、当サイトでは責任を負いかねますのでご了承ください。
+                で作成しております。
               </p>
             </div>
           </div>
