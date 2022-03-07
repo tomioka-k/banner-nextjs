@@ -75,7 +75,6 @@ export default function Home({ images, categories, tags, colors }) {
     }
     return items;
   };
-
   const hasMore = data && data[size - 1] && data[size - 1].next === null;
 
   return (

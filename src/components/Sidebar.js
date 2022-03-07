@@ -40,7 +40,10 @@ export default function Sidebar({
         </div>
         <div className="flex flex-wrap text-center my-2 text-sm">
           {imageType === "square" ? (
-            <div className="w-16 h-16 bg-blue-200 mx-3 border-8 border-blue-400 cursor-pointer"></div>
+            <div
+              className="w-16 h-16 bg-blue-200 mx-3 border-8 border-blue-400 cursor-pointer"
+              onClick={() => setImageType("")}
+            ></div>
           ) : (
             <div
               className="w-16 h-16 bg-gray-100 mx-3 border-8 border-gray-400 cursor-pointer"
@@ -48,7 +51,10 @@ export default function Sidebar({
             ></div>
           )}
           {imageType === "horizontal" ? (
-            <div className="w-20 h-10 self-center bg-blue-200 mx-3 border-8 border-blue-400 cursor-pointer"></div>
+            <div
+              className="w-20 h-10 self-center bg-blue-200 mx-3 border-8 border-blue-400 cursor-pointer"
+              onClick={() => setImageType("")}
+            ></div>
           ) : (
             <div
               className="w-20 h-10 self-center bg-gray-100 mx-3 border-8 border-gray-400 cursor-pointer"
@@ -56,7 +62,10 @@ export default function Sidebar({
             ></div>
           )}
           {imageType === "vertical" ? (
-            <div className="w-12 h-16 bg-blue-200 mx-3 border-8 border-blue-400 cursor-pointer"></div>
+            <div
+              className="w-12 h-16 bg-blue-200 mx-3 border-8 border-blue-400 cursor-pointer"
+              onClick={() => setImageType("")}
+            ></div>
           ) : (
             <div
               className="w-12 h-16 bg-gray-100 mx-3 border-8 border-gray-400 cursor-pointer"
@@ -90,6 +99,7 @@ export default function Sidebar({
                   border: "5px solid #60A5FA",
                 }}
                 className="w-8 h-8 mx-1 cursor-pointer"
+                onClick={() => setColorType({ id: "", name: "" })}
               />
             ) : (
               <ColorSquare
@@ -126,6 +136,7 @@ export default function Sidebar({
               <div
                 key={category.id}
                 className="mx-1 px-3 my-1 py-1 rounded-xl bg-blue-400 text-white cursor-pointer"
+                onClick={() => setCategoryType({ id: "", name: "" })}
               >
                 {category.name}
               </div>
@@ -162,6 +173,7 @@ export default function Sidebar({
             tag.id === tagType.id ? (
               <div
                 className="mx-1 px-3 my-1 py-1 bg-blue-400 text-white rounded-xl cursor-pointer"
+                onClick={() => setTagType({ id: "", name: "" })}
                 key={tag.id}
               >
                 #{tag.name}
