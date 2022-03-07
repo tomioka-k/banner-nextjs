@@ -1,8 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
-import useSWR from "swr";
 import useSWRInfinite from "swr/infinite";
 import axios from "axios";
 
@@ -59,7 +58,9 @@ export default function Home({ images, categories, tags, colors }) {
     return fetchUrl + new URLSearchParams(params);
   };
 
-  const { data, size, setSize } = useSWRInfinite(getKey, fetcher);
+  const { data, error, size, setSize } = useSWRInfinite(getKey, fetcher, {
+    initialData: images,
+  });
 
   const banner_items = () => {
     let items = [];
@@ -72,9 +73,10 @@ export default function Home({ images, categories, tags, colors }) {
         );
       });
     }
-    console.log(items);
     return items;
   };
+
+  const hasMore = data && data[size - 1] && data[size - 1].next === null;
 
   return (
     <Layout title="Top">
@@ -97,8 +99,18 @@ export default function Home({ images, categories, tags, colors }) {
         </div>
         <div className="w-full lg:w-3/4 pl-5">
           <div className="flex flex-wrap">{banner_items()}</div>
-
-          <button onClick={() => setSize(size + 1)}>Load More</button>
+          {!hasMore ? (
+            <div className="w-full text-center">
+              <button
+                className="text-white bg-blue-400 rounded-3xl px-16 py-1 my-6 hover:bg-blue-500"
+                onClick={() => setSize(size + 1)}
+              >
+                See More
+              </button>
+            </div>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </Layout>
@@ -118,6 +130,6 @@ export async function getStaticProps() {
       tags,
       colors,
     },
-    revalidate: 3,
+    revalidate: 100,
   };
 }

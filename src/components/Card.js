@@ -6,7 +6,7 @@ export default function Card({ image }) {
   return (
     <section className="px-2 py-2">
       <figure className="bg-gray-50 rounded-3xl">
-        <Zoom>
+        <Zoom zoomMargin={50}>
           <Image
             className="rounded-2xl justify-items-center"
             src={image}
