@@ -3,8 +3,8 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 import useSWR from "swr";
+import useSWRInfinite from "swr/infinite";
 import axios from "axios";
-import InfiniteScroll from "react-infinite-scroller";
 
 import Layout from "../components/Layout";
 import Sidebar from "../components/Sidebar";
@@ -43,31 +43,38 @@ export default function Home({ images, categories, tags, colors }) {
     id: "",
     name: "",
   });
-  const [hasMore, setHasMore] = useState(true);
-  const loader = (
-    <div className="loader" key={0}>
-      Loading ...
-    </div>
-  );
 
-  const paramsList = () => {
+  const getKey = (pageIndex, previousPageData) => {
+    const fetchUrl = `${fetchApiUrl}image/?`;
+
     let params = {
+      page: pageIndex + 1,
       image_type: imageType,
       category: categoryType.id,
       color: colorType.id,
     };
     if (tagType.id !== "") {
       params.tag = tagType.id;
-      return params;
     }
-    return params;
+    return fetchUrl + new URLSearchParams(params);
   };
 
-  const fetchUrl = `${fetchApiUrl}image?` + new URLSearchParams(paramsList());
+  const { data, size, setSize } = useSWRInfinite(getKey, fetcher);
 
-  const { data: banner_list, error } = useSWR(fetchUrl, fetcher, {
-    fallbackData: "",
-  });
+  const banner_items = () => {
+    let items = [];
+    for (var i in data) {
+      data[i].results.map((banner) => {
+        items.push(
+          <div key={banner.id} className="xl:w-1/4 lg:w-1/3 w-1/2">
+            <Card image={banner.image} />
+          </div>
+        );
+      });
+    }
+    console.log(items);
+    return items;
+  };
 
   return (
     <Layout title="Top">
@@ -89,21 +96,9 @@ export default function Home({ images, categories, tags, colors }) {
           />
         </div>
         <div className="w-full lg:w-3/4 pl-5">
-          {banner_list.count === 0 ? (
-            <div className="text-gray-600">見つかりませんでした</div>
-          ) : (
-            <InfiniteScroll hasMore={hasMore} loader={loader}>
-              <div className="flex flex-wrap">
-                {banner_list
-                  ? banner_list.results.map((banner) => (
-                      <div key={banner.id} className="xl:w-1/4 lg:w-1/3 w-1/2">
-                        <Card image={banner.image} />
-                      </div>
-                    ))
-                  : "isLoading"}
-              </div>
-            </InfiniteScroll>
-          )}
+          <div className="flex flex-wrap">{banner_items()}</div>
+
+          <button onClick={() => setSize(size + 1)}>Load More</button>
         </div>
       </div>
     </Layout>
