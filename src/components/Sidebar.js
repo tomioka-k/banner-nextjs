@@ -8,7 +8,6 @@ export default function Sidebar({
   categories,
   tags,
   colors,
-  fetcher,
   imageType,
   setImageType,
   categoryType,
@@ -17,6 +16,7 @@ export default function Sidebar({
   setTagType,
   colorType,
   setColorType,
+  imageCounts,
 }) {
   const ColorSquare = styled.div`
     background: black;
@@ -24,7 +24,12 @@ export default function Sidebar({
 
   return (
     <div>
-      <div className="w-full bg-white rounded-2xl px-5 py-2 my-5">
+      <div className="w-full bg-white rounded-md px-5 py-2 shadow">
+        <div className="text-lg text-gray-800 font-bold">
+          {imageCounts.count} images in total
+        </div>
+      </div>
+      <div className="w-full bg-white rounded-md px-5 py-2 my-5 shadow">
         <div className="flex flex-wrap  my-3">
           <div className="text-lg text-gray-800 font-bold">Image type</div>
           {imageType === "" ? (
@@ -74,7 +79,7 @@ export default function Sidebar({
           )}
         </div>
       </div>
-      <div className="w-full bg-white rounded-2xl px-5 py-2 my-5">
+      <div className="w-full bg-white rounded-md px-5 py-2 my-5 shadow">
         <div className="flex flex-wrap my-3">
           <div className="text-lg text-gray-800 font-bold ">Color</div>
           {colorType.id === "" ? (
@@ -113,7 +118,7 @@ export default function Sidebar({
         </div>
       </div>
 
-      <div className="w-full bg-white rounded-2xl px-5 py-2">
+      <div className="w-full bg-white rounded-md px-5 py-2 shadow">
         <div className="flex flex-wrap  my-3">
           <div className="text-lg text-gray-800 font-bold">Category</div>
           {categoryType.id === "" ? (
@@ -154,7 +159,7 @@ export default function Sidebar({
           )}
         </div>
       </div>
-      <div className="w-full bg-white rounded-2xl px-5 py-2 my-5">
+      <div className="w-full bg-white rounded-md px-5 py-2 my-5 shadow">
         <div className="flex flex-wrap my-3">
           <div className="text-lg text-gray-800 font-bold">Tag</div>
           {tagType.id === "" ? (

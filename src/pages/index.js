@@ -10,7 +10,7 @@ import Sidebar from "../components/Sidebar";
 import Card from "../components/Card";
 import {
   loadImages,
-  loadCategory,
+  loadImageCount,
   loadTags,
   loadCategories,
   loadColors,
@@ -28,8 +28,14 @@ const fetcher = (url) =>
     })
     .then((res) => res.data);
 
-export default function Home({ images, categories, tags, colors }) {
-  const [imageType, setImageType] = useState("");
+export default function Home({
+  images,
+  imageCounts,
+  categories,
+  tags,
+  colors,
+}) {
+  const [imageType, setImageType] = useState("square");
   const [categoryType, setCategoryType] = useState({
     id: "",
     name: "",
@@ -67,7 +73,7 @@ export default function Home({ images, categories, tags, colors }) {
     for (var i in data) {
       data[i].results.map((banner) => {
         items.push(
-          <div key={banner.id} className="xl:w-1/4 lg:w-1/3 w-1/2">
+          <div key={banner.id} className="xl:w-1/5 lg:w-1/4 w-1/3">
             <Card image={banner.image} />
           </div>
         );
@@ -94,6 +100,7 @@ export default function Home({ images, categories, tags, colors }) {
             setTagType={setTagType}
             colorType={colorType}
             setColorType={setColorType}
+            imageCounts={imageCounts}
           />
         </div>
         <div className="w-full lg:w-3/4 pl-5">
@@ -121,10 +128,12 @@ export async function getStaticProps() {
   const categories = await loadCategories();
   const tags = await loadTags();
   const colors = await loadColors();
+  const imageCounts = await loadImageCount();
 
   return {
     props: {
       images,
+      imageCounts,
       categories,
       tags,
       colors,

@@ -8,7 +8,7 @@ export default function PrivacyPolicy() {
   return (
     <Layout title="about | banner-reference">
       <div className="container flex py-10 mx-auto">
-        <div className="bg-white flex mx-auto my-5 w-full  lg:w-3/4 rounded-3xl">
+        <div className="bg-white flex mx-auto my-5 w-full  lg:w-3/4 rounded-2xl shadow">
           <div className="mx-10 my-5">
             <h2 className="text-5xl text-center my-10">Privacy Policy</h2>
 

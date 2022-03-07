@@ -5,15 +5,9 @@ import "react-medium-image-zoom/dist/styles.css";
 export default function Card({ image }) {
   return (
     <section className="px-2 py-2">
-      <figure className="bg-gray-50 rounded-3xl">
+      <figure className="bg-white shadow rounded-md px-2.5 pt-2.5 pb-1">
         <Zoom zoomMargin={50}>
-          <Image
-            className="rounded-2xl justify-items-center"
-            src={image}
-            width={350}
-            height={350}
-            objectFit="contain"
-          />
+          <Image src={image} width={1000} height={1000} objectFit="contain" />
         </Zoom>
       </figure>
     </section>

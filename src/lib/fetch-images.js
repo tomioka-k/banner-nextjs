@@ -40,3 +40,13 @@ export async function loadColors() {
   const colors = await res.json();
   return colors;
 }
+
+export async function loadImageCount() {
+  const res = await fetch(new URL(`${apiUrl}image/count/`), {
+    headers: {
+      Authorization: `Token ${apiToken}`,
+    },
+  });
+  const imageCount = await res.json();
+  return imageCount;
+}
