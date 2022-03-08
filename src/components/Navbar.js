@@ -10,10 +10,9 @@ export default function Navbar() {
         </h3>
       </div>
       <div className="space-x-8">
-        <Link href="/">Home</Link>
-        <Link href="https://self-methods.com/">Blogs</Link>
         <Link href="/about">About</Link>
         <Link href="/privacy-policy">Privacy Policy</Link>
+        <Link href="https://self-methods.com/">Blog</Link>
       </div>
     </nav>
   );
