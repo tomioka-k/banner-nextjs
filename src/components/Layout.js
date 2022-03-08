@@ -1,9 +1,9 @@
 import Head from "next/head";
+import { Html } from "next/document";
 import Link from "next/link";
 import Image from "next/image";
 
 import Navbar from "./Navbar";
-import Sidebar from "./Sidebar";
 
 export default function Layout({ children, title = "Top" }) {
   return (
