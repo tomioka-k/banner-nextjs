@@ -37,7 +37,7 @@ export default function Home({
   tags,
   colors,
 }) {
-  const [imageType, setImageType] = useState("square");
+  const [imageType, setImageType] = useState("");
   const [categoryType, setCategoryType] = useState({
     id: "",
     name: "",
