@@ -1,9 +1,3 @@
-import Link from "next/link";
-import Image from "next/image";
-import styled from "styled-components";
-
-import { useState } from "react";
-
 export default function Sidebar({
   categories,
   tags,
@@ -18,10 +12,6 @@ export default function Sidebar({
   setColorType,
   imageCounts,
 }) {
-  const ColorSquare = styled.div`
-    background: black;
-  `;
-
   return (
     <div>
       <div className="w-full bg-white rounded-md px-5 py-2 shadow">
@@ -97,22 +87,22 @@ export default function Sidebar({
         <div className="flex flex-wrap my-2 text-sm">
           {colors.results.map((color) =>
             color.id === colorType.id ? (
-              <ColorSquare
+              <div
                 key={color.id}
                 style={{
                   backgroundColor: color.code,
                   border: "5px solid #60A5FA",
                 }}
-                className="w-8 h-8 mx-1 cursor-pointer"
+                className="w-8 h-8 mx-1 my-1 cursor-pointer"
                 onClick={() => setColorType({ id: "", name: "" })}
-              />
+              ></div>
             ) : (
-              <ColorSquare
+              <div
                 key={color.id}
                 style={{ backgroundColor: color.code }}
-                className="w-8 h-8 mx-1 cursor-pointer"
+                className="w-8 h-8 mx-1 my-1 cursor-pointer border"
                 onClick={() => setColorType({ id: color.id, name: color.name })}
-              />
+              ></div>
             )
           )}
         </div>

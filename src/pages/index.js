@@ -69,7 +69,6 @@ export default function Home({
   const { data, error, size, setSize } = useSWRInfinite(getKey, fetcher, {
     initialData: images,
   });
-  console.log(data);
 
   const banner_items = () => {
     let items = [];
@@ -159,6 +158,6 @@ export async function getStaticProps() {
       tags,
       colors,
     },
-    revalidate: 100,
+    revalidate: 60,
   };
 }

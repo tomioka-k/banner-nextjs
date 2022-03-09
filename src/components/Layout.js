@@ -1,5 +1,4 @@
 import Head from "next/head";
-import { Html } from "next/document";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -9,7 +8,7 @@ export default function Layout({ children, title = "Top" }) {
   return (
     <div>
       <Head>
-        <title>{title} | banner-reference</title>
+        <title>{title} | Banner Reference</title>
       </Head>
       <header className="shadow">
         <Navbar />

@@ -6,7 +6,7 @@ export default function Navbar() {
     <nav className="container flex justify-around py-5 mx-auto">
       <div>
         <h3 className="text-2xl font-medium text-blue-500">
-          <Link href="/">banner-reference</Link>
+          <Link href="/">Banner Reference</Link>
         </h3>
       </div>
       <div className="space-x-8">
